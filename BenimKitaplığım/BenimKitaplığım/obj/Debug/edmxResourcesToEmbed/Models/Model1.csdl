@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbKitapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBLKATEGORİ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KATEGORIAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLKITAP" Relationship="Self.FK_TBLKITAP_TBLKATEGORİ" FromRole="TBLKATEGORİ" ToRole="TBLKITAP" />
+  </EntityType>
+  <EntityType Name="TBLKITAP">
+    <Key>
+      <PropertyRef Name="KITAPID" />
+    </Key>
+    <Property Name="KITAPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SAYFA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="YAZAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KATEGORI" Type="Int32" />
+    <NavigationProperty Name="TBLKATEGORİ" Relationship="Self.FK_TBLKITAP_TBLKATEGORİ" FromRole="TBLKITAP" ToRole="TBLKATEGORİ" />
+  </EntityType>
+  <Association Name="FK_TBLKITAP_TBLKATEGORİ">
+    <End Role="TBLKATEGORİ" Type="Self.TBLKATEGORİ" Multiplicity="0..1" />
+    <End Role="TBLKITAP" Type="Self.TBLKITAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLKATEGORİ">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TBLKITAP">
+        <PropertyRef Name="KATEGORI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbKitapEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBLKATEGORİ" EntityType="Self.TBLKATEGORİ" />
+    <EntitySet Name="TBLKITAP" EntityType="Self.TBLKITAP" />
+    <AssociationSet Name="FK_TBLKITAP_TBLKATEGORİ" Association="Self.FK_TBLKITAP_TBLKATEGORİ">
+      <End Role="TBLKATEGORİ" EntitySet="TBLKATEGORİ" />
+      <End Role="TBLKITAP" EntitySet="TBLKITAP" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

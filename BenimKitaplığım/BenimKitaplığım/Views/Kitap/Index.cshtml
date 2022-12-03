@@ -1,0 +1,32 @@
+﻿@using BenimKitaplığım.Models;
+@model List<TBLKITAP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_KitapLayout.cshtml";
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Kitap Adı</th>
+        <th>Yazarı</th>
+        <th>Sayfa</th>
+        <th>Tür</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach ( var x in Model)
+            {
+                <tr>
+                    <td>@x.KITAPID</td>
+                    <td>@x.AD</td>
+                    <td>@x.YAZAR</td>
+                    <td>@x.SAYFA</td>
+                    <td>@x.TBLKATEGORİ.KATEGORIAD</td>
+                    <td><a href="/Kitap/KitapSil/@x.KITAPID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Kitap/KitapGetir/@x.KITAPID" class="btn btn-success">Güncelle</a></td>
+                </tr>
+            }
+</table>
+<a href="/Kitap/KitapEkle/" class="btn btn-warning">YENİ KAYIT</a>
+

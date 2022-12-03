@@ -1,0 +1,33 @@
+﻿@model BenimKitaplığım.Models.TBLKITAP
+@{
+    ViewBag.Title = "KitapEkle";
+    Layout = "~/Views/Shared/_KitapLayout.cshtml";
+}
+
+<h2>KitapEkle</h2>
+<br />
+<form class="form-group" method="post">
+    <div style="margin-bottom:15px">
+        @Html.LabelFor(x => x.AD)
+        @Html.TextBoxFor(x => x.AD, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px">
+        @Html.LabelFor(x => x.YAZAR)
+        @Html.TextBoxFor(x => x.YAZAR, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px">
+        @Html.LabelFor(x => x.SAYFA)
+        @Html.TextBoxFor(x => x.SAYFA, new { @class = "form-control" })
+    </div>
+    <div style="margin-bottom:15px">
+        @Html.LabelFor(x => x.KATEGORI)
+        @Html.TextBoxFor(x => x.KATEGORI, new { @class = "form-control" })
+    </div>
+    <h6>Lütfen kategori kutusuna</h6>
+    <h6>Roman için:1</h6>
+    <h6>Hikaye için:2</h6>
+    <h6>Tiyatro için:3 </h6>
+    <h6>Şiir için:4  Sayısını yazınız...</h6>
+    <button class="btn btn-info">KAYDET</button>
+</form>
+
